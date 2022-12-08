@@ -1,12 +1,27 @@
+import { Route, Routes } from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
 import Form from './Form'
 import { InvoiceProvider } from './Invoice'
-import InvoicePreview from './InvoicePreview'
+import InvoiceRender from './InvoiceRender'
 
 export default function App() {
   return (
-    <InvoiceProvider>
+    <BrowserRouter>
+      <InvoiceProvider>
+        <Routes>
+          <Route path="/render" element={<InvoiceRender />} />
+          <Route path="*" element={<FormAndPreview />} />
+        </Routes>
+      </InvoiceProvider>
+    </BrowserRouter>
+  )
+}
+
+function FormAndPreview() {
+  return (
+    <>
       <Form />
-      <InvoicePreview />
-    </InvoiceProvider>
+      <InvoiceRender border />
+    </>
   )
 }

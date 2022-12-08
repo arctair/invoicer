@@ -1,10 +1,15 @@
 import React from 'react'
 import { useInvoice } from './Invoice'
 
-export default function InvoicePreview() {
+interface InvoiceRenderProps {
+  border?: boolean
+}
+export default function InvoiceRender({
+  border = false,
+}: InvoiceRenderProps) {
   const invoice = useInvoice()
   return (
-    <Letter>
+    <Letter border={border}>
       <LetterContent>
         <Section>
           <h1>Invoice</h1>
@@ -40,13 +45,16 @@ export default function InvoicePreview() {
   )
 }
 
-function Letter(props: React.PropsWithChildren) {
+interface LetterProps extends React.PropsWithChildren {
+  border: boolean
+}
+function Letter({ border, ...props }: LetterProps) {
   return (
     <div
       style={{
         width: '8.5in',
         height: '11in',
-        border: '1px solid red',
+        border: border ? '1px solid red' : 'inherit',
         margin: 'auto',
       }}
       {...props}

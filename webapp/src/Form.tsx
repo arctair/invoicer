@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useInvoice, useInvoiceMethods } from './Invoice'
 
 export default function Form() {
@@ -96,6 +97,9 @@ export default function Form() {
           onChange={(e) => methods.setHourCount(e.target.value)}
         />
       </>
+      <Link style={{ gridColumn: '2' }} to="/render">
+        go to render
+      </Link>
     </div>
   )
 }
