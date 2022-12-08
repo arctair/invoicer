@@ -21,7 +21,11 @@ export default function Form() {
           onChange={(e) => methods.setProjectName(e.target.value)}
         />
         <Label htmlFor="hourlyRate">Hourly Rate:</Label>
-        <input name="hourlyRate" />
+        <input
+          name="hourlyRate"
+          value={invoice.hourlyRateAsString}
+          onChange={(e) => methods.setHourlyRate(e.target.value)}
+        />
       </>
       <>
         <Header>Bill To</Header>
@@ -78,7 +82,11 @@ export default function Form() {
         <Label htmlFor="billingPeriodEnd">End:</Label>
         <input name="billingPeriodEnd" />
         <Label htmlFor="hourlyRate">Hour Count:</Label>
-        <input name="hourCount" />
+        <input
+          name="hourCount"
+          value={invoice.hourCountAsString}
+          onChange={(e) => methods.setHourCount(e.target.value)}
+        />
       </>
     </div>
   )

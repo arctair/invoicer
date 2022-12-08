@@ -28,6 +28,8 @@ export default function InvoicePreview() {
           <div>{invoice.billFromLineThree}</div>
         </div>
       </div>
+      <h2>Billing Period</h2>
+      Total: ${invoice.hourCount * invoice.hourlyRate}
     </div>
   )
 }
