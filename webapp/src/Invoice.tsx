@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 
 export default interface Invoice {
+  projectName: string
   billFromLineOne: string
   billFromLineTwo: string
   billFromLineThree: string
@@ -17,10 +18,11 @@ const throwErrMissingProvider = () => {
 const context = React.createContext<{
   invoice: Invoice
   methods: {
+    setReferenceNumber: React.Dispatch<string>
+    setProjectName: React.Dispatch<string>
     setBillFromLineOne(value: string): void
     setBillFromLineTwo(value: string): void
     setBillFromLineThree(value: string): void
-    setReferenceNumber: React.Dispatch<string>
     setBillToLineOne: React.Dispatch<string>
     setBillToLineTwo: React.Dispatch<string>
     setBillToLineThree: React.Dispatch<string>
@@ -28,6 +30,7 @@ const context = React.createContext<{
 }>({
   invoice: {
     referenceNumber: errMissingProvider,
+    projectName: errMissingProvider,
     billToLineOne: errMissingProvider,
     billToLineTwo: errMissingProvider,
     billToLineThree: errMissingProvider,
@@ -37,6 +40,7 @@ const context = React.createContext<{
   },
   methods: {
     setReferenceNumber: throwErrMissingProvider,
+    setProjectName: throwErrMissingProvider,
     setBillToLineOne: throwErrMissingProvider,
     setBillToLineTwo: throwErrMissingProvider,
     setBillToLineThree: throwErrMissingProvider,
@@ -48,6 +52,7 @@ const context = React.createContext<{
 
 export function InvoiceProvider(props: React.PropsWithChildren) {
   const [referenceNumber, setReferenceNumber] = React.useState('000000')
+  const [projectName, setProjectName] = React.useState('Example Project')
   const [billToLineOne, setBillToLineOne] = React.useState('Example LLC')
   const [billToLineTwo, setBillToLineTwo] = React.useState(
     '12345 Example Way S #999',
@@ -69,6 +74,7 @@ export function InvoiceProvider(props: React.PropsWithChildren) {
       value={{
         invoice: {
           referenceNumber,
+          projectName,
           billToLineOne,
           billToLineTwo,
           billToLineThree,
@@ -78,6 +84,7 @@ export function InvoiceProvider(props: React.PropsWithChildren) {
         },
         methods: {
           setReferenceNumber,
+          setProjectName,
           setBillToLineOne,
           setBillToLineTwo,
           setBillToLineThree,

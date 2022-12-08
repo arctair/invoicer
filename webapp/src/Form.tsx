@@ -17,8 +17,8 @@ export default function Form() {
         <Label htmlFor="projectName">Project Name:</Label>
         <input
           name="projectName"
-          value={invoice.referenceNumber}
-          onChange={(e) => methods.setReferenceNumber(e.target.value)}
+          value={invoice.projectName}
+          onChange={(e) => methods.setProjectName(e.target.value)}
         />
         <Label htmlFor="hourlyRate">Hourly Rate:</Label>
         <input name="hourlyRate" />
@@ -68,7 +68,11 @@ export default function Form() {
       <>
         <Header>Billing Period</Header>
         <Label htmlFor="referenceNumber">Reference Number:</Label>
-        <input name="referenceNumber" />
+        <input
+          name="referenceNumber"
+          value={invoice.referenceNumber}
+          onChange={(e) => methods.setReferenceNumber(e.target.value)}
+        />
         <Label htmlFor="billingPeriodStart">Start:</Label>
         <input name="billingPeriodStart" />
         <Label htmlFor="billingPeriodEnd">End:</Label>

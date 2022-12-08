@@ -12,7 +12,8 @@ export default function InvoicePreview() {
       }}
     >
       <h1>Invoice</h1>
-      Reference Number: {invoice.referenceNumber}
+      <div>Project: {invoice.projectName}</div>
+      <div>Reference Number: {invoice.referenceNumber}</div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
         <div>
           <h2>Bill To</h2>
