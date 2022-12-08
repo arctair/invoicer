@@ -11,6 +11,8 @@ export default interface Invoice {
   billToLineThree: string
   billToLineOne: string
   referenceNumber: string
+  startDate: string
+  endDate: string
   hourCount: number
   hourCountAsString: string
 }
@@ -31,6 +33,8 @@ const context = React.createContext<{
     setBillToLineTwo: React.Dispatch<string>
     setBillToLineThree: React.Dispatch<string>
     setReferenceNumber: React.Dispatch<string>
+    setStartDate: React.Dispatch<string>
+    setEndDate: React.Dispatch<string>
     setHourCount: React.Dispatch<string>
   }
 }>({
@@ -45,6 +49,8 @@ const context = React.createContext<{
     billFromLineTwo: errMissingProvider,
     billFromLineThree: errMissingProvider,
     referenceNumber: errMissingProvider,
+    startDate: errMissingProvider,
+    endDate: errMissingProvider,
     hourCount: 0,
     hourCountAsString: '0',
   },
@@ -58,6 +64,8 @@ const context = React.createContext<{
     setBillFromLineTwo: throwErrMissingProvider,
     setBillFromLineThree: throwErrMissingProvider,
     setReferenceNumber: throwErrMissingProvider,
+    setStartDate: throwErrMissingProvider,
+    setEndDate: throwErrMissingProvider,
     setHourCount: throwErrMissingProvider,
   },
 })
@@ -85,6 +93,12 @@ export function InvoiceProvider(props: React.PropsWithChildren) {
     'Seattle, WA 98101',
   )
   const [referenceNumber, setReferenceNumber] = React.useState('000000')
+  const [startDate, setStartDate] = React.useState(
+    'Thursday, January 1, 1970 (1/1/70)',
+  )
+  const [endDate, setEndDate] = React.useState(
+    'Wednesday, January 7, 1970 (1/7/70)',
+  )
   const [hourCount, setHourCount] = React.useState(0)
   const [hourCountAsString, setHourCountAsString] = React.useState('0')
   return (
@@ -101,6 +115,8 @@ export function InvoiceProvider(props: React.PropsWithChildren) {
           billFromLineTwo,
           billFromLineThree,
           referenceNumber,
+          startDate,
+          endDate,
           hourCount,
           hourCountAsString,
         },
@@ -117,6 +133,8 @@ export function InvoiceProvider(props: React.PropsWithChildren) {
           setBillFromLineTwo,
           setBillFromLineThree,
           setReferenceNumber,
+          setStartDate,
+          setEndDate,
           setHourCount: (s) => {
             setHourCountAsString(s)
             setHourCount(parseFloat(s))

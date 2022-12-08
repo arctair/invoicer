@@ -29,7 +29,9 @@ export default function InvoicePreview() {
         </div>
       </div>
       <h2>Billing Period</h2>
-      Total: ${invoice.hourCount * invoice.hourlyRate}
+      <div>Start Date: {invoice.startDate}</div>
+      <div>End Date: {invoice.endDate}</div>
+      <div>Total: ${invoice.hourCount * invoice.hourlyRate}</div>
     </div>
   )
 }

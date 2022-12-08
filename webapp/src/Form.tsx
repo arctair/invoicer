@@ -77,10 +77,18 @@ export default function Form() {
           value={invoice.referenceNumber}
           onChange={(e) => methods.setReferenceNumber(e.target.value)}
         />
-        <Label htmlFor="billingPeriodStart">Start:</Label>
-        <input name="billingPeriodStart" />
-        <Label htmlFor="billingPeriodEnd">End:</Label>
-        <input name="billingPeriodEnd" />
+        <Label htmlFor="billingPeriodStartDate">Start Date:</Label>
+        <input
+          name="billingPeriodStartDate"
+          value={invoice.startDate}
+          onChange={(e) => methods.setStartDate(e.target.value)}
+        />
+        <Label htmlFor="billingPeriodEndDate">End Date:</Label>
+        <input
+          name="billingPeriodEndDate"
+          value={invoice.endDate}
+          onChange={(e) => methods.setEndDate(e.target.value)}
+        />
         <Label htmlFor="hourlyRate">Hour Count:</Label>
         <input
           name="hourCount"
