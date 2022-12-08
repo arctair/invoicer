@@ -6,27 +6,33 @@ export default function InvoicePreview() {
   return (
     <Letter>
       <LetterContent>
-        <h1>Invoice</h1>
-        <div>Project: {invoice.projectName}</div>
-        <div>Reference Number: {invoice.referenceNumber}</div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-          <div>
-            <h2>Bill To</h2>
-            <div>{invoice.billToLineOne}</div>
-            <div>{invoice.billToLineTwo}</div>
-            <div>{invoice.billToLineThree}</div>
+        <Section>
+          <h1>Invoice</h1>
+          <div>Project: {invoice.projectName}</div>
+          <div>Reference Number: {invoice.referenceNumber}</div>
+        </Section>
+        <Section>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+            <div>
+              <h2>Bill To</h2>
+              <div>{invoice.billToLineOne}</div>
+              <div>{invoice.billToLineTwo}</div>
+              <div>{invoice.billToLineThree}</div>
+            </div>
+            <div>
+              <h2>Bill From</h2>
+              <div>{invoice.billFromLineOne}</div>
+              <div>{invoice.billFromLineTwo}</div>
+              <div>{invoice.billFromLineThree}</div>
+            </div>
           </div>
-          <div>
-            <h2>Bill From</h2>
-            <div>{invoice.billFromLineOne}</div>
-            <div>{invoice.billFromLineTwo}</div>
-            <div>{invoice.billFromLineThree}</div>
-          </div>
-        </div>
-        <h2>Billing Period</h2>
-        <div>Start Date: {invoice.startDate}</div>
-        <div>End Date: {invoice.endDate}</div>
-        <div>Total: ${invoice.hourCount * invoice.hourlyRate}</div>
+        </Section>
+        <Section>
+          <h2>Billing Period</h2>
+          <div>Start Date: {invoice.startDate}</div>
+          <div>End Date: {invoice.endDate}</div>
+          <div>Total: ${invoice.hourCount * invoice.hourlyRate}</div>
+        </Section>
       </LetterContent>
     </Letter>
   )
@@ -48,4 +54,8 @@ function Letter(props: React.PropsWithChildren) {
 
 function LetterContent(props: React.PropsWithChildren) {
   return <div style={{ margin: '2rem' }} {...props} />
+}
+
+function Section(props: React.PropsWithChildren) {
+  return <div style={{ margin: '2rem 0' }} {...props} />
 }
