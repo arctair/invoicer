@@ -1,8 +1,8 @@
 import { useInvoice, useInvoiceMethods } from './Invoice'
 
 export default function Form() {
-  const { referenceNumber } = useInvoice()
-  const { setReferenceNumber } = useInvoiceMethods()
+  const invoice = useInvoice()
+  const methods = useInvoiceMethods()
   return (
     <div
       style={{
@@ -17,8 +17,8 @@ export default function Form() {
         <Label htmlFor="projectName">Project Name:</Label>
         <input
           name="projectName"
-          value={referenceNumber}
-          onChange={(e) => setReferenceNumber(e.target.value)}
+          value={invoice.referenceNumber}
+          onChange={(e) => methods.setReferenceNumber(e.target.value)}
         />
         <Label htmlFor="hourlyRate">Hourly Rate:</Label>
         <input name="hourlyRate" />
@@ -26,20 +26,44 @@ export default function Form() {
       <>
         <Header>Bill To</Header>
         <Label htmlFor="billToLineOne">Line 1:</Label>
-        <input name="billToLineOne" />
+        <input
+          name="billToLineOne"
+          value={invoice.billToLineOne}
+          onChange={(e) => methods.setBillToLineOne(e.target.value)}
+        />
         <Label htmlFor="billToLineTwo">Line 2:</Label>
-        <input name="billToLineTwo" />
+        <input
+          name="billToLineTwo"
+          value={invoice.billToLineTwo}
+          onChange={(e) => methods.setBillToLineTwo(e.target.value)}
+        />
         <Label htmlFor="billToLineThree">Line 3:</Label>
-        <input name="billToLineThree" />
+        <input
+          name="billToLineThree"
+          value={invoice.billToLineThree}
+          onChange={(e) => methods.setBillToLineThree(e.target.value)}
+        />
       </>
       <>
         <Header>Bill From</Header>
         <Label htmlFor="billFromLineOne">Line 1:</Label>
-        <input name="billFromLineOne" />
+        <input
+          name="billFromLineOne"
+          value={invoice.billFromLineOne}
+          onChange={(e) => methods.setBillFromLineOne(e.target.value)}
+        />
         <Label htmlFor="billFromLineTwo">Line 2:</Label>
-        <input name="billFromLineTwo" />
+        <input
+          name="billFromLineTwo"
+          value={invoice.billFromLineTwo}
+          onChange={(e) => methods.setBillFromLineTwo(e.target.value)}
+        />
         <Label htmlFor="billFromLineThree">Line 3:</Label>
-        <input name="billFromLineThree" />
+        <input
+          name="billFromLineThree"
+          value={invoice.billFromLineThree}
+          onChange={(e) => methods.setBillFromLineThree(e.target.value)}
+        />
       </>
       <>
         <Header>Billing Period</Header>

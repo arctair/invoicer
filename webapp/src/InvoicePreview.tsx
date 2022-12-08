@@ -1,7 +1,7 @@
 import { useInvoice } from './Invoice'
 
 export default function InvoicePreview() {
-  const { referenceNumber } = useInvoice()
+  const invoice = useInvoice()
   return (
     <div
       style={{
@@ -12,7 +12,21 @@ export default function InvoicePreview() {
       }}
     >
       <h1>Invoice</h1>
-      Reference Number: {referenceNumber}
+      Reference Number: {invoice.referenceNumber}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+        <div>
+          <h2>Bill To</h2>
+          <div>{invoice.billToLineOne}</div>
+          <div>{invoice.billToLineTwo}</div>
+          <div>{invoice.billToLineThree}</div>
+        </div>
+        <div>
+          <h2>Bill From</h2>
+          <div>{invoice.billFromLineOne}</div>
+          <div>{invoice.billFromLineTwo}</div>
+          <div>{invoice.billFromLineThree}</div>
+        </div>
+      </div>
     </div>
   )
 }
