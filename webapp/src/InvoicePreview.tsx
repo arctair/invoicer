@@ -31,6 +31,8 @@ export default function InvoicePreview() {
           <h2>Billing Period</h2>
           <div>Start Date: {invoice.startDate}</div>
           <div>End Date: {invoice.endDate}</div>
+          <div>Hourly Rate: ${invoice.hourlyRateAsString}</div>
+          <div>Number of Hours: {invoice.hourCountAsString}</div>
           <div>Total: ${invoice.hourCount * invoice.hourlyRate}</div>
         </Section>
       </LetterContent>
